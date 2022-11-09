@@ -26,9 +26,9 @@ do {
             let i = 0
             while (i < Number(aluno.notas)) {
                 nota = Number(prompt("Digite o valor da nota:"))
-                i++
                 calculo.push(nota)
                 soma = calculo[i] += nota
+                i++
             }
             aluno.media = nota / Number(aluno.notas)
             let conceito = ""
