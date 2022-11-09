@@ -2,14 +2,12 @@
   alert("Olá, João!")
   let numeroInicial = parseInt(prompt("Digite o número inicial da operação:"))
   let numeroFinal = parseInt(prompt("Digite o número final da operação:"))
-  let i = numeroInicial
   
-  while (i <= numeroFinal) {
-    if(i % 2 == 0) {
-        alert(i)
-        i++
+  for (let i = numeroInicial; i <= numeroFinal; i++) {
+    if (i % 2 == 0) {
+      console.log(i)
     }
-    break
   }
+
   
 </script>
