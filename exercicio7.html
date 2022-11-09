@@ -1,0 +1,54 @@
+<script>
+  alert("Bem vindo ao Sistema Escolar Unificado (S.E.U.)")
+
+  const alunos = []
+  let opcao = ""
+
+  do {
+      opcao = prompt(
+          "Cadastrar novo(a) aluno(a)\n\n" +
+          "Escolha uma opção:\n" +
+          "1. Cadastrar\n" +
+          "2. Exibir alunos\n" +
+          "3. Sair"
+          )
+
+      switch (opcao) {
+          case "1":
+              const aluno = {}
+
+              aluno.nome = prompt("Qual o nome do aluno?")
+              aluno.matricula = prompt("Digite o número da matrícula:")
+              aluno.notas = prompt("Quantas notas o aluno teve?")
+              aluno.media = mediaFinal
+
+              const confirmacao = confirm(
+                  "Salvar estas informações?\n" +
+                  "\nAluno: " + aluno.nome +
+                  "\nMatrícula: " + aluno.matricula +
+                  "\nQuantidade de Notas: " + aluno.notas +
+                  "\nMédia Final: " + aluno.media     
+              )
+              if (confirmacao) {
+                  alunos.push(aluno)
+              }
+          break
+          case "2":
+              for (let i = 0; i < alunos.length; i++) {
+                  alert(
+                      "Aluno: " + (i + 1) +
+                      "\nMatrícula: " + alunos[i].matricula +
+                      "\nQuantidade de Notas: " + alunos[i].notas +
+                      "\nMédia Final: " + alunos[i].media
+                  )
+              }
+          break
+          case "3":
+              alert("Saindo do Cadastro.")
+          break
+          default:
+              alert("Opção inválida!")
+      }
+  } while (opcao !== "3")
+
+</script>
