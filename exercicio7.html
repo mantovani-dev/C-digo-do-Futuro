@@ -1,68 +1,71 @@
 <script>
-   alert("Bem vindo ao Sistema Escolar Unificado (S.E.U.)")
+alert("Bem vindo ao Sistema Escolar Unificado (S.E.U.)")
 
-    const alunos = []
-    let opcao = ""
+const alunos = []
+let opcao = ""
 
-    do {
-        opcao = prompt(
-            "Cadastrar novo(a) aluno(a)\n\n" +
-            "Escolha uma opção:\n" +
-            "1. Cadastrar\n" +
-            "2. Exibir alunos\n" +
-            "3. Sair"
+do {
+    opcao = prompt(
+        "Cadastrar novo(a) aluno(a)\n\n" +
+        "Escolha uma opção:\n" +
+        "1. Cadastrar\n" +
+        "2. Exibir alunos\n" +
+        "3. Sair"
+    )
+
+    switch (opcao) {
+        case "1":
+            const aluno = {}
+
+            aluno.nome = prompt("Qual o nome do aluno?")
+            aluno.matricula = prompt("Digite o número da matrícula:")
+            aluno.notas = prompt("Quantas notas o aluno teve?")
+            let calculo = []
+            let nota = 0
+            let soma = 0
+            let i = 0
+            while (i < Number(aluno.notas)) {
+                nota = Number(prompt("Digite o valor da nota:"))
+                i++
+                calculo.push(nota)
+                soma = calculo[i] += nota
+            }
+            aluno.media = nota / Number(aluno.notas)
+            let conceito = ""
+            if (aluno.media >= 7) {
+                conceito = "Aprovado"
+            } else {
+                conceito = "Reprovado"
+            }
+
+            const confirmacao = confirm(
+                "Salvar estas informações?\n" +
+                "\nAluno: " + aluno.nome +
+                "\nMatrícula: " + aluno.matricula +
+                "\nQuantidade de Notas: " + aluno.notas +
+                "\nMédia Final: " + aluno.media +
+                "\nStatus: " + conceito
+
             )
-
-        switch (opcao) {
-            case "1":
-                const aluno = {}
-
-                aluno.nome = prompt("Qual o nome do aluno?")
-                aluno.matricula = prompt("Digite o número da matrícula:")
-                aluno.notas = prompt("Quantas notas o aluno teve?")
-                let nota = 0
-                let calculo = 0
-                let i = 1
-                while (i <= Number(aluno.notas)) {
-                    nota = Number(prompt("Digite o valor da nota " + i + ":"))
-                    i++
-                }
-                aluno.media = nota / Number(aluno.notas)
-                let conceito = ""
-                if (aluno.media >= 7) {
-                    conceito = "Aprovado"
-                } else {
-                    conceito = "Reprovado"
-                }
-
-                const confirmacao = confirm(
-                    "Salvar estas informações?\n" +
-                    "\nAluno: " + aluno.nome +
-                    "\nMatrícula: " + aluno.matricula +
-                    "\nQuantidade de Notas: " + aluno.notas +
-                    "\nMédia Final: " + aluno.media +
-                    "\nStatus: " + conceito
-
+            if (confirmacao) {
+                alunos.push(aluno)
+            }
+            break
+        case "2":
+            for (let i = 0; i < alunos.length; i++) {
+                alert(
+                    "Aluno: " + alunos[i].nome +
+                    "\nMatrícula: " + alunos[i].matricula +
+                    "\nQuantidade de Notas: " + alunos[i].notas +
+                    "\nMédia Final: " + alunos[i].media
                 )
-                if (confirmacao) {
-                    alunos.push(aluno)
-                }
+            }
             break
-            case "2":
-                for (let i = 0; i < alunos.length; i++) {
-                    alert(
-                        "Aluno: " + alunos[i].nome +
-                        "\nMatrícula: " + alunos[i].matricula +
-                        "\nQuantidade de Notas: " + alunos[i].notas +
-                        "\nMédia Final: " + alunos[i].media
-                    )
-                }
+        case "3":
+            alert("Saindo do Cadastro.")
             break
-            case "3":
-                alert("Saindo do Cadastro.")
-            break
-            default:
-                alert("Opção inválida!")
-        }
-    } while (opcao !== "3")
+        default:
+            alert("Opção inválida!")
+    }
+} while (opcao !== "3")
 </script>
